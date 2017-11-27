@@ -1,0 +1,143 @@
+<ion-view view-title="Tasks">
+  <ion-nav-buttons side="secondary">
+      <div class="buttons">
+        <button class="button button-icon icon ion-home" ng-click="goToHome()"></button>
+      </div>
+  </ion-nav-buttons>
+  <div class="tabs-background-light tab-color-dark">
+		<ul class="tabs tabs-icon-top">
+			<li ng-class="{active:isSelected(1)}" class="tab-item">
+				<a ng-click="select(1)">
+					<i class="icon ">
+            <img class="apr-task-bottom task-tab-img" src="img/Capri_icon.png" />
+          </i>
+          Capri
+        </a>
+      <li>
+			<li ng-class="{active:isSelected(2)}" class="tab-item">
+				<a ng-click="select(2)">
+					<i class="icon ">
+            <img class="rm-task-bottom task-tab-img" src="img/RM_Module_icon.png" />
+          </i>
+          RM
+        </a>
+      <li>
+			<li ng-class="{active:isSelected(3)}" class="tab-item">
+				<a ng-click="select(3)">
+					<i class="icon ">
+            <img class="fml-task-bottom task-tab-img" src="img/Concerto_icon.png" />
+          </i>
+          Product Dev
+        </a>
+      <li>
+			<li ng-class="{active:isSelected(4)}" class="tab-item">
+				<a ng-click="select(4)">
+          <i class="icon">
+            <img class="rnd-task-bottom task-tab-img" src="img/Link_Logo.PNG" />
+          </i>
+          R&D Link
+        </a>
+      <li>
+      <li ng-class="{active:isSelected(5)}" class="tab-item">
+				<a ng-click="select(5)">
+          <i class="icon">
+            <img class="all-task-bottom task-tab-img" src="img/all_task.png" />
+          </i>
+          All
+        </a>
+      <li>  
+		</ul>
+  </div>
+  <ion-content>
+    <div class="card">
+      <div class="item item-divider" ng-click="toggleData(taskDataList.todayTasks)" style="background: red; color: white;">
+        Today ({{getCount(taskDataList.todayTasks)}})
+      <span class="icon" ng-class="isDataShown(taskDataList.todayTasks) ? 'ion-arrow-down-b' : 'ion-arrow-right-b'"></span>
+      </div>
+      <ion-item ng-repeat="task in taskDataList.todayTasks track by $index"  class="item card item-accordion m5" ng-show="isDataShown(taskDataList.todayTasks)">
+        <img ng-class="loadAppImageClass(task.applicationName)" task-image-source="{{task.applicationName}}" />
+        <h4 style="margin-top: 3px; font-weight: bold; margin-right: 20px;">
+          {{task.referenceID}}
+          <span class="icon ion-android-checkbox task-complete" ng-if="task.applicationName==='RnDLink'" ng-click="openTaskPopUp(task)"></span>
+        </h4>
+        <h4 style="margin-right: 20px;">
+          <div class="item-complex item-text-wrap">{{task.name}}</div>
+          <div class="font-size-75 bold">Due On {{!task.dueDate ? 'N/A' : task.dueDate | date:'dd/MMM/yyyy'}}</div>
+        </h4>
+      </ion-item>
+    </div>
+
+    <div class="card">
+      <div ng-click="toggleData(taskDataList.thisWeekTasks)" class="item item-divider" style="background: orangered; color: white;">
+        This Week ({{getCount(taskDataList.thisWeekTasks)}})
+        <span class="icon" ng-class="isDataShown(taskDataList.thisWeekTasks) ? 'ion-arrow-down-b' : 'ion-arrow-right-b'"></span>
+      </div>
+      <ion-item ng-repeat="task in taskDataList.thisWeekTasks track by $index"  class="item card item-accordion m5" ng-show="isDataShown(taskDataList.thisWeekTasks)"> 
+        <img ng-class="loadAppImageClass(task.applicationName)" task-image-source="{{task.applicationName}}" />
+        <h4 style="margin-top: 3px; font-weight: bold; margin-right: 20px;">
+          {{task.referenceID}}
+          <span class="icon ion-android-checkbox task-complete" ng-if="task.applicationName==='RnDLink'" ng-click="openTaskPopUp(task)"></span>
+        </h4>
+        <h4 style="margin-right: 20px;">
+          <div class="item-complex item-text-wrap">{{task.name}}</div>
+          <div class="font-size-75 bold">Due On {{!task.dueDate ? 'N/A' : task.dueDate | date:'dd/MMM/yyyy'}}</div>
+        </h4>
+      </ion-item>
+    </div>
+
+    <div class="card">
+      <div ng-click="toggleData(taskDataList.nextWeekTasks)" class="item item-divider" style="background: orange; color: white;">
+        Next Week ({{getCount(taskDataList.nextWeekTasks)}})
+        <span class="icon" ng-class="isDataShown(taskDataList.nextWeekTasks) ? 'ion-arrow-down-b' : 'ion-arrow-right-b'"></span>
+      </div>
+      <ion-item ng-repeat="task in taskDataList.nextWeekTasks track by $index"  class="item card item-accordion m5" ng-show="isDataShown(taskDataList.nextWeekTasks)">
+        <img ng-class="loadAppImageClass(task.applicationName)" task-image-source="{{task.applicationName}}" />
+        <h4 style="margin-top: 3px; font-weight: bold; margin-right: 20px;">
+          {{task.referenceID}}
+          <span class="icon ion-android-checkbox task-complete" ng-if="task.applicationName==='RnDLink'" ng-click="openTaskPopUp(task)"></span>
+        </h4>
+        <h4 style="margin-right: 20px;">
+          <div class="item-complex item-text-wrap">{{task.name}}</div>
+          <div class="font-size-75 bold">Due On {{!task.dueDate ? 'N/A' : task.dueDate | date:'dd/MMM/yyyy'}}</div>
+        </h4>
+      </ion-item>
+    </div>
+    <div class="card">
+      <div ng-click="toggleData(taskDataList.nextTwoWeeksTasks)" class="item item-divider" style="background: limegreen; color: white;">
+        Next Two Weeks ({{getCount(taskDataList.nextTwoWeeksTasks)}})
+        <span class="icon" ng-class="isDataShown(taskDataList.nextTwoWeeksTasks) ? 'ion-arrow-down-b' : 'ion-arrow-right-b'"></span>
+      </div>
+      <ion-item ng-repeat="task in taskDataList.nextTwoWeeksTasks track by $index"  class="item card item-accordion m5" ng-show="isDataShown(taskDataList.nextTwoWeeksTasks)">
+        <img ng-class="loadAppImageClass(task.applicationName)" task-image-source="{{task.applicationName}}" />
+        <h4 style="margin-top: 3px; font-weight: bold; margin-right: 20px;">
+          {{task.referenceID}}
+          <span class="icon ion-android-checkbox task-complete" ng-if="task.applicationName==='RnDLink'" ng-click="openTaskPopUp(task)"></span>
+        </h4>
+        <h4 style="margin-right: 20px;">
+          <div class="item-complex item-text-wrap">{{task.name}}</div>
+          <div class="font-size-75 bold">Due On {{!task.dueDate ? 'N/A' : task.dueDate | date:'dd/MMM/yyyy'}}</div>
+        </h4>
+      </ion-item>
+    </div>
+
+    <div class="card">
+      <div ng-click="toggleData(taskDataList.laterTasks)" class="item item-divider" style="background: darkgreen; color: white;">
+        Later ({{getCount(taskDataList.laterTasks)}})
+        <span class="icon" ng-class="isDataShown(taskDataList.laterTasks) ? 'ion-arrow-down-b' : 'ion-arrow-right-b'"></span>
+      </div>
+      <ion-item ng-repeat="task in taskDataList.laterTasks track by $index"  class="item card item-accordion m5" ng-show="isDataShown(taskDataList.laterTasks)">
+        <img ng-class="loadAppImageClass(task.applicationName)" task-image-source="{{task.applicationName}}" />
+        <h4 style="margin-top: 3px; font-weight: bold; margin-right: 20px;">
+          {{task.referenceID}}
+          <span class="icon ion-android-checkbox task-complete" ng-if="task.applicationName==='RnDLink'" ng-click="openTaskPopUp(task)"></span>
+        </h4>
+        <h4 style="margin-right: 20px;">
+          <div class="item-complex item-text-wrap">{{task.name}}</div>
+          <div class="font-size-75 bold">Due On {{!task.dueDate ? 'N/A' : task.dueDate | date:'dd/MMM/yyyy'}}</div>
+        </h4>
+      </ion-item>
+    </div>
+    
+    <div style="height: 40px"></div>
+  </ion-content>
+</ion-view>

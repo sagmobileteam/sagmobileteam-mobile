@@ -1,0 +1,73 @@
+<ion-view>
+	<ion-nav-title>Projects</ion-nav-title>
+	<ion-nav-buttons side="secondary">
+      <div class="buttons">
+        <button class="button button-icon icon ion-home" ng-click="goToHome()"></button>
+      </div>
+  </ion-nav-buttons>
+  <div class="tabs-background-light tab-color-dark">
+		<ul class="tabs tabs-icon-top">
+			<li ng-class="{active:isSelected(1)}" class="tab-item">
+				<a ng-click="select(1)">
+					<i class="icon ion-folder" style="color: darkblue"></i>
+					My Projects
+				</a>
+			<li>
+			<li ng-class="{active:isSelected(2)}" class="tab-item">
+				<a ng-click="select(2)">
+					<i class="icon ion-star" style="color: red"></i>
+					Favorites
+				</a>
+			<li>
+			<li ng-class="{active:isSelected(3)}" class="tab-item">
+				<a ng-click="select(3)">
+					<i class="icon ion-clock" style="color: darkgreen"></i>
+					Recent
+				</a>
+			<li>
+			<li ng-class="{active:isSelected(4)}" class="tab-item">
+				<a ng-click="select(4)">
+					<i class="icon ion-grid" style="color: #000000"></i>
+					All Projects
+				</a>
+			<li>
+		</ul>
+  </div>
+  <ion-content>
+		<div class="bar bar-header item-input-inset">
+			 <label class="item-input-wrapper">
+				<i class="icon ion-ios-search placeholder-icon"></i>
+				<input id="searchTextData" type="search" placeholder="Enter Keyword, Name or Number" data-ng-model="searchText.data" data-ng-keypress="checkIfEnterKeyWasPressed($event)">
+			</label>
+			<i class="ion-close jj-pad-5 jj-cp" data-ng-click="clearSearchText()" > </i>
+		</div>
+    <ion-list id="project-list-data">
+      <ion-item ng-repeat="project in projectDetailsObj"  class="list card item-thumbnail-left" href="#/app/projectDetails" data-ng-click="setProjectDetails(project)">
+				<img image-source="{{project.projectData.image}}" />
+        <h3>
+					<span class="text-ellipse">{{project.projectData.projectNumber}}</span>
+					<span class="icon jj-right star-project" style="color: #E6A332; cursor: pointer" 
+						data-ng-class="project.projectData.isFavorite === 'true' ? 'ion-ios-star' : 'ion-ios-star-outline'"
+							ng-click="$event.preventDefault();project.projectData.isFavorite === 'true' ? 
+							removeFavorite('{{project.projectData.projectNumber}}') : 
+							addFavorite('{{project.projectData.projectNumber}}')">
+					</span>
+				</h3>
+        <h4>
+					<div class="text-ellipse">{{project.projectData.projectName}}</div>
+        	<div class="text-ellipse">{{project.projectData.projectStatus}}</div>
+        	<div class="text-ellipse">{{project.projectData.projectType}}</div>            
+					<div class="text-ellipse">{{project.projectData.createdBy.fullName}}</div>
+				</h4>
+				<!--<ion-option-button ng-if="project.projectData.isFavorite === 'false'"
+					class="button-assertive icon ion-ios-star-outline" 
+					ng-click="addFavorite('{{project.projectData.projectNumber}}')">
+				</ion-option-button>
+				<ion-option-button ng-if="project.projectData.isFavorite === 'true'"
+					class="button-assertive icon ion-ios-star" 
+					ng-click="removeFavorite('{{project.projectData.projectNumber}}')">
+				</ion-option-button>-->
+      </ion-item>
+    </ion-list>
+  </ion-content>
+</ion-view>

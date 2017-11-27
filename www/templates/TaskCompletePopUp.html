@@ -1,0 +1,16 @@
+<ion-modal-view>
+  <ion-header-bar>
+    <h1 class="title" style="font-size: 100%">Are you want to Complete Task?</h1>
+    <div class="buttons">
+      <button class="button button-clear" ng-click="closeTaskPopUp()">
+        <span class="icon ion-android-close" style="color:black"></span>
+      </button>
+    </div>
+  </ion-header-bar>
+  <ion-content>
+    <div>
+      <button class="button button-block button-positive" ng-click="completeTask(taskData)">Yes</button>
+      <button class="button button-block button-positive" color="danger" ng-click="closeTaskPopUp()">Cancel</button>
+    </div>
+  </ion-content>
+</ion-modal-view>

@@ -1,0 +1,71 @@
+<ion-view view-title="{{currentProjectData.projectData.projectName}}">
+	<ion-nav-buttons side="secondary">
+      <div class="buttons">
+        <button class="button button-icon icon ion-home" ng-click="goToHome()"></button>
+      </div>
+  	</ion-nav-buttons>
+  	<ion-content class="jj-pad-5">
+		<div class="card" style="box-shadow: 1px 1px 5px #006400;">
+			<div class="project-details-label" style="background: #006400; color: white;">{{currentProjectData.projectData.projectNumber}}</div>
+			<img image-source="{{currentProjectData.projectData.image}}" class="jj-text-align-center project-detail-page-image project-details-image jj-left" />
+			<div>
+				<span class="project-details-label">Project Name : </span>
+				<span class="project-details-desc">{{currentProjectData.projectData.projectName}}</span>
+			</div>
+			<div>
+				<span class="project-details-label">Project Description : </span>
+				<span class="project-details-desc">{{currentProjectData.projectData.projectDescription}}</span>
+			</div>
+			<div>
+				<span class="project-details-label">Project Status : </span>
+				<span class="project-details-desc">{{currentProjectData.projectData.projectStatus}}</span>
+			</div>
+			<div>
+				<span class="project-details-label">Project Type : </span>
+				<span class="project-details-desc">{{currentProjectData.projectData.projectType}}</span>
+			</div>            
+			<div>
+				<span class="project-details-label">Full Name : </span>
+				<span class="project-details-desc">{{currentProjectData.projectData.createdBy.fullName}}</span>
+			</div>
+			<div>
+				<span class="project-details-label">isFavorite : </span>
+				<span class="project-details-desc">{{currentProjectData.projectData.isFavorite}}</span>
+			</div>
+		</div>
+		<div class="card" style="box-shadow: 1px 1px 5px #009900;">
+			<div class="project-details-label" style="background: #009900; color: white;">Project Leader</div>
+			<div style="padding-left: 10px">
+				<span class="project-details-label">User Id : </span>
+				<span class="project-details-desc">{{currentProjectData.projectData.projectLeader.userID}}</span>
+			</div>
+			<div style="padding-left: 10px">
+				<span class="project-details-label">Full Name : </span>
+				<span class="project-details-desc">{{currentProjectData.projectData.projectLeader.fullName}}</span>
+			</div>
+			<div style="padding-left: 10px">
+				<span class="project-details-label">Email Id : </span>
+				<span class="project-details-desc">{{currentProjectData.projectData.projectLeader.email}}</span>
+			</div>
+		</div>
+		<div class="card" style="box-shadow: 1px 1px 5px #00BB00;">
+			<div class="project-details-label" style="background: #00BB00; color: white;">Created By</div>
+			<div style="padding-left: 10px">
+				<span class="project-details-label">User Id : </span>
+				<span class="project-details-desc">{{currentProjectData.projectData.createdBy.userID}}</span>
+			</div>
+			<div style="padding-left: 10px">
+				<span class="project-details-label">Full Name : </span>
+				<span class="project-details-desc">{{currentProjectData.projectData.createdBy.fullName}}</span>
+			</div>
+			<div style="padding-left: 10px">
+				<span class="project-details-label">Email Id : </span>
+				<span class="project-details-desc">{{currentProjectData.projectData.createdBy.email}}</span>
+			</div>
+			<div style="padding-left: 10px">
+				<span class="project-details-label">Creation Date : </span>
+				<span class="project-details-desc">{{currentProjectData.projectData.createdBy.createdDate}}</span>
+			</div>
+		</div>
+  	</ion-content>
+</ion-view>

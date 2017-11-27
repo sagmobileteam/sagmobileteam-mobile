@@ -1,0 +1,131 @@
+<ion-view view-title="R&D Link">
+  <ion-nav-buttons side="secondary">
+      <div class="buttons">
+        <button class="button button-icon icon ion-home" ng-click="goToHome()"></button>
+      </div>
+  </ion-nav-buttons>
+
+  <ion-content>
+    <div class="bar bar-header item-input-inset">
+			 <label class="item-input-wrapper">
+				<i class="icon ion-ios-search placeholder-icon"></i>
+				<input id="searchTextData" type="search" placeholder="All System Search..." data-ng-model="allSearchText.data" data-ng-keypress="checkIfEnterKeyWasPressed($event)" data-ng-change="setServiceValue(allSearchText.data)">
+			</label>
+			<i class="ion-close jj-pad-5 jj-cp" data-ng-click="allClearSearchText()" > </i>
+		</div>
+    <div class="card bb">
+      <div class="row bg-dodgerblue bold jj-cp" ng-click="goToProject(0)">
+        Projects
+      </div>
+      <div class="row" style="padding-top: 5px;text-align: center;">
+        <div class="col jj-cp">
+          <a ng-click="goToProject(1)">
+					  <i class="icon ion-folder font-size-250 db" style="color:forestgreen"></i>
+					  <span class="font-size-60 db rndlink-icons">My Projects</span>
+            <span class="font-size-75">({{convertBlackToZero(summaryCount.myProjectsCount)}})</span>
+          </a>
+        </div>
+        <div class="col jj-cp">
+          <a ng-click="goToProject(2)">
+					  <i class="icon ion-star font-size-250 db" style="color:darkred"></i>
+            <span class="font-size-60 db rndlink-icons">Favorites</span>
+            <span class="font-size-75">({{convertBlackToZero(summaryCount.favProjectsCount)}})</span>
+          </a>
+        </div>
+        <div class="col jj-cp">
+          <a ng-click="goToProject(3)">
+					  <i class="icon ion-clock font-size-250 db" style="color: #550099"></i>
+					  <span class="font-size-60 db rndlink-icons">Recent</span>
+            <span class="font-size-75">({{convertBlackToZero(summaryCount.recentProjectsCount)}})</span>
+          </a>
+        </div>
+        <div class="col jj-cp">
+          <a ng-click="goToProject(4)">
+            <i class="icon ion-grid font-size-250 db" style="color:magenta"></i>
+					  <span class="font-size-60 db rndlink-icons">All Projects</span>
+            <span class="font-size-75">({{convertBlackToZero(summaryCount.allProjectsCount)}})</span>
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <div class="card bb">
+      <div class="row bg-green bold jj-cp" ng-click="gotoTask('')">
+        Tasks
+      </div>
+      <div class="row" style="padding-top: 5px;text-align: center;">
+        <div class="col jj-cp">
+          <a ng-click="gotoTask(1)">
+					  <i class="icon ion-ios-calendar font-size-250 db" style="color: red"></i>
+					  <span class="font-size-60 db rndlink-icons">Today</span>
+            <span class="font-size-75">({{convertBlackToZero(summaryCount.myTaskCounts.todayCount)}})</span>
+          </a>
+        </div>
+        <div class="col jj-cp">
+          <a ng-click="gotoTask(2)">
+					  <i class="icon ion-ios-calendar font-size-250 db" style="color: orangered"></i>
+					  <span class="font-size-60 db rndlink-icons">This Week</span>
+            <span class="font-size-75">({{convertBlackToZero(summaryCount.myTaskCounts.thisWeekCount)}})</span>
+          </a>
+        </div>
+        <div class="col jj-cp">
+          <a ng-click="gotoTask(3)">
+					  <i class="icon ion-ios-calendar font-size-250 db" style="color: orange"></i>
+					  <span class="font-size-60 db rndlink-icons">Next Week</span>
+            <span class="font-size-75">({{convertBlackToZero(summaryCount.myTaskCounts.nextWeekCount)}})</span>
+          </a>
+        </div>
+        <div class="col jj-cp">
+          <a ng-click="gotoTask(4)">
+            <i class="icon ion-ios-calendar font-size-250 db" style="color: limegreen"></i>
+					  <span class="font-size-60 db rndlink-icons">Next 2 Week</span>
+            <span class="font-size-75">({{convertBlackToZero(summaryCount.myTaskCounts.nextTwoWeekCount)}})</span>
+          </a>
+        </div>
+        <div class="col jj-cp">
+          <a ng-click="gotoTask(5)">
+            <i class="icon ion-ios-calendar font-size-250 db" style="color: darkgreen"></i>
+					  <span class="font-size-60 db rndlink-icons">Later</span>
+            <span class="font-size-75">({{convertBlackToZero(summaryCount.myTaskCounts.laterCount)}})</span>
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <div class="card bb">
+      <div class="row bg-grey bold jj-cp" ng-click="gotoCheckpoint(0)">
+        Checkpoint
+      </div>
+      <div class="row" style="padding-top: 5px;text-align: center;">
+        <div class="col jj-cp">
+          <a ng-click="gotoCheckpoint(1)">
+					  <i class="icon ion-ios-checkmark font-size-250 db" style="color:blue"></i>
+					  <span class="font-size-60 db rndlink-icons">Sample</span>
+            <span class="font-size-75">({{convertBlackToZero(summaryCount.mySampleRequestsCount)}})</span>
+          </a>
+        </div>
+        <div class="col jj-cp">
+          <a ng-click="gotoCheckpoint(2)">
+					  <i class="icon ion-ios-checkmark font-size-250 db" style="color:aqua"></i>
+					  <span class="font-size-60 db rndlink-icons">Study</span>
+            <span class="font-size-75">({{convertBlackToZero(summaryCount.myStudyRequestsCount)}})</span>
+          </a>
+        </div>
+        <div class="col jj-cp">
+          <a ng-click="gotoCheckpoint(3)">
+					  <i class="icon ion-ios-checkmark font-size-250 db" style="color:darkmagenta"></i>
+					  <span class="font-size-60 db rndlink-icons">Claim</span>
+            <span class="font-size-75">({{convertBlackToZero(summaryCount.name)}})</span>
+          </a>
+        </div>
+        <div class="col jj-cp">
+          <a ng-click="gotoCheckpoint(5)">
+            <i class="icon ion-ios-checkmark font-size-250 db" style="color:darkgoldenrod"></i>
+					  <span class="font-size-60 db rndlink-icons">Toxicology</span>
+            <span class="font-size-75">({{convertBlackToZero(summaryCount.name)}})</span>
+          </a>
+        </div>
+      </div>
+    </div>
+  </ion-content>
+</ion-view>

@@ -1,0 +1,56 @@
+<ion-view view-title="RDOP Link">
+  <ion-content>
+    <div class="home-page-container-height home-page-task-container">
+      <div class="home-page-top-task">
+        Today's Top Tasks
+      </div>
+      <ul>
+        <li ng-repeat="data in taskData | limitTo : 3" class="home-page-task-list">
+          <a href="#/app/task">
+            <div class="jj-inline-block">
+              Name :
+            </div>
+            <div class="home-page-task-data">
+              {{data.name}}
+            </div>
+            <div class="jj-inline-block">
+              Status :
+            </div>
+            <div class="home-page-task-data"> 
+              {{data.status}}
+            </div>
+            <div class="jj-inline-block">
+              App Name :
+            </div>
+            <div class="home-page-task-data home-page-app-name"> 
+              {{data.applicationName}}
+            </div>
+          </a>
+        </li>
+      </ul>
+      <div class="home-page-more jj-text-align-center">
+        <a href="#/app/task">
+          <span class="ion-arrow-down-b"></span>
+        </a>
+      </div>
+    </div>
+    <div class="home-page-container-height jj-center">
+      <!-- Tabs clicks goes here -->
+      <div class="home-page-tabs">
+        <a href="#/app/project">
+          Projects
+        </a>
+      </div>
+      <div class="home-page-tabs">
+        <a href="#/app/task">
+          Tasks
+        </a>
+      </div>
+      <div class="home-page-tabs">
+        <a href="#/app/checkpoint">
+          Checkpoints
+        </a>
+      </div>
+    </div>
+  </ion-content>
+</ion-view>

@@ -1,0 +1,79 @@
+<ion-view>
+	<ion-nav-title>All System Search</ion-nav-title>
+	<ion-nav-buttons side="secondary">
+      <div class="buttons">
+        <button class="button button-icon icon ion-home" ng-click="goToHome()"></button>
+      </div>
+  </ion-nav-buttons>
+  <ion-content>
+		<div class="bar bar-header item-input-inset">
+			 <label class="item-input-wrapper">
+				<i class="icon ion-ios-search placeholder-icon"></i>
+				<input id="searchTextData" type="search" placeholder="All System Search..." data-ng-model="allSearchText.data" data-ng-keypress="checkIfEnterKeyWasPressed($event)" data-ng-change="setServiceValue(allSearchText.data)">
+			</label>
+			<i class="ion-close jj-pad-5 jj-cp" data-ng-click="clearSearchText()" > </i>
+		</div>
+
+    <div class="card bb">
+      <div class="row bold">
+        <img src="img/logo/capri.png" style="width: 20px; height: 20px;" class="rdop-capri" />
+				<div style="padding-left: 5px; color: #D92E2C">Capri</div>
+      </div>
+      <div class="row">
+				<div style="font-size: 80%">You don't have permission to view Capri results.</div>
+      </div>
+		</div>
+
+		<div class="card bb" style="margin-top: 0px">
+      <div class="row bold">
+        <img src="img/logo/pd.png" style="width: 20px; height: 20px;" class="rdop-product-dev" />
+				<div style="padding-left: 5px; color: #209E14">Product Development</div>
+      </div>
+      <div class="row">
+				<div style="font-size: 80%">You don't have permission to view Product Development results.</div>
+      </div>
+		</div>
+
+		<div class="card bb" style="margin-top: 0px">
+      <div class="row bold">
+        <img src="img/logo/rm.png" style="width: 20px; height: 20px;" class="rdop-rm" />
+				<div style="padding-left: 5px; color: #A2156E">Raw Material</div>
+      </div>
+      <div class="row">
+				<div style="font-size: 80%">You don't have permission to view Raw Material results.</div>
+      </div>
+		</div>
+
+		<div class="card bb" style="margin-top: 0px">
+      <div class="row bold" style="color: #01628F">
+        <img src="img/logo/rndlink.png" style="width: 20px; height: 20px;" class="rdop-rndlink" />
+				<div style="padding: 0px 5px 0px 5px">R&D Link </div>
+				<div ng-show="allData.activeProjectCount > 0"> (1-{{allData.projectDetails.length}} of </div>
+				<div style="padding-left: 5px"> {{allData.activeProjectCount}}</div>
+				<div ng-show="allData.activeProjectCount > 0"> ) </div>
+				<div ng-click="openProjectAll()" style="position: absolute; right: 15px; font-weight: normal; text-decoration: underline; font-size:75%; cursor:pointer;">
+					View All
+				</div>
+      </div>
+      <div class="row">
+				<ion-list id="all-system-list-data" style="width: 100%">
+					<ion-item ng-repeat="project in allData.projectDetails"  class="list card item-thumbnail-left" href="#/app/projectDetails" data-ng-click="setProjectDetails(project)">
+						<img image-source="{{project.projectData.image}}" />
+						<h3>
+							<span class="text-ellipse">{{project.projectData.projectNumber}}</span>
+							<span class="icon jj-right star-project" style="color: #E6A332; cursor: pointer" 
+								data-ng-class="project.projectData.isFavorite === 'true' ? 'ion-ios-star' : 'ion-ios-star-outline'">
+							</span>
+						</h3>
+						<h4>
+							<div class="text-ellipse">{{project.projectData.projectName}}</div>
+							<div class="text-ellipse">{{project.projectData.projectStatus}}</div>
+							<div class="text-ellipse">{{project.projectData.projectType}}</div>            
+							<div class="text-ellipse">{{project.projectData.createdBy.fullName}}</div>
+						</h4>
+					</ion-item>
+				</ion-list>
+      </div>
+		</div>
+  </ion-content>
+</ion-view>

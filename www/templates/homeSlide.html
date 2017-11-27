@@ -1,0 +1,92 @@
+<ion-view view-title="RDOP Link">
+  <ioo-content scroll="false">
+    <ion-slide-box class="home-page-slider" auto-play="true"  does-continue="true" slide-interval="2500">
+      <ion-slide>
+        <div class="card">
+          <div class="item item-divider item-balanced" >
+            My Projects <span class="bold">(121)</span>
+          </div>
+          <div class="item jj-pad-5">
+            My Projects <span class="bold">(5)</span>
+          </div>
+          <div class="item jj-pad-5">
+            Favorites <span class="bold">(10)</span>
+          </div>
+          <div class="item jj-pad-5">
+            Recents <span class="bold">(5)</span>
+          </div>
+          <div class="item jj-pad-5">
+            All Projects <span class="bold">(150)</span>
+          </div>
+        </div>
+      </ion-slide>
+      <ion-slide>
+        <div class="card">
+          <div class="item item-divider item-assertive" >
+            My Tasks <span class="bold">(300)</span>
+          </div>
+          <div class="item jj-pad-5">
+            Today <span class="bold">(100)</span>
+          </div>
+          <div class="item jj-pad-5">
+            This Week <span class="bold">(100)</span>
+          </div>
+          <div class="item jj-pad-5">
+            Next Week <span class="bold">(100)</span>
+          </div>
+          <div class="item jj-pad-5">
+            Next 2 Week <span class="bold">(100)</span>
+          </div>
+          <div class="item jj-pad-5">
+            Later <span class="bold">(100)</span>
+          </div>
+        </div>
+      </ion-slide>
+      <ion-slide>
+        <div class="card">
+          <div class="item item-divider item-dark">
+            My Requests <span class="bold">(20)</span>
+          </div>
+          <div class="item jj-pad-5">
+              Sample Requests  <span class="bold">(12)</span>
+          </div>
+          <div class="item jj-pad-5">
+              Study  Requests <span class="bold">(5)</span>
+          </div>
+          <div class="item jj-pad-5">
+              Claim Rquests  <span class="bold">(12)</span>
+          </div>
+          <div class="item jj-pad-5">
+              Clinical Safety Requests  <span class="bold">(12)</span>
+          </div>
+          <div class="item jj-pad-5">
+              Toxicology Requests  <span class="bold">(12)</span>
+          </div>
+        </div>
+      </ion-slide>
+    </ion-slide-box>
+    <div class="card">
+      <div class="item item-divider item-assertive">
+        Today's Tasks
+      </div>
+      <ion-item ng-repeat="task in taskData | limitTo : 2"  class="item item-accordion">
+        <img  ng-class="loadAppImageClass(task.applicationName)" task-image-source="{{task.applicationName}}" />
+        <h4>
+          <div>{{task.referenceID}} </div>
+          <div class="item-complex item-text-wrap"> {{task.name}}</div>
+          <div>{{task.status}}</div>
+        </h4>
+      </ion-item>
+      <ion-item ng-if="taskData.length === 0">
+        <h4>
+          <span style="color: red">* No Tasks are found.</span>
+        </h4>
+      </ion-item>
+      <div class="home-page-more jj-text-align-center">
+        <a href="#/app/task">
+          <span class="ion-arrow-down-b"></span>
+        </a>
+      </div>
+    </div>
+  </ioo-content>
+</ion-view>
